@@ -1,7 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -9,14 +7,11 @@ import { setCssThemeVar } from "utils/helpers";
 import { setProfileAction } from "store/actions/account";
 import { HEADER_HEIGHT, INIT_PROFILE } from "utils/constants";
 import { setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction, setActiveRouteAction } from "store/actions/layout";
-import { Spin } from "antd";
 
-// const Spin = dynamic(() => import("antd/es/spin"), { ssr: false, loading: () => <></> });
-// const Spin = dynamic(() => import("antd").then((x) => x.Spin), { ssr: false, loading: () => <></> });
-// const Spin = dynamic(() => import("antd/es/spin"));
-
-const AntProvider = dynamic(() => import("components/providers/AntProvider"), { ssr: false });
+import dynamic from "next/dynamic";
+const Spin = dynamic(() => import("antd").then((x) => x.Spin));
 const HeaderContainer = dynamic(() => import("components/layouts/header/HeaderContainer"));
+const AntProvider = dynamic(() => import("components/providers/AntProvider"), { ssr: false });
 
 const RootProvider = (props: any) => {
   const { user, setProfileAction, setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction, setActiveRouteAction } = props;
@@ -105,13 +100,11 @@ const RootProvider = (props: any) => {
   };
 
   return initialized ? (
-    // <AntProvider theme={theme}>
-    //   <HeaderContainer position="sticky" />
-    //   {props.children}
-    // </AntProvider>
-    <p>heyy</p>
+    <AntProvider theme={theme}>
+      <HeaderContainer position="sticky" />
+      {props.children}
+    </AntProvider>
   ) : (
-    // <p>a</p>
     <Spin fullscreen spinning={true} />
   );
 };

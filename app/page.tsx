@@ -2,7 +2,7 @@
 // const HeaderContainer = dynamic(() => import("components/layouts/header/HeaderContainer"));
 
 const Page = () => (
-  <p>
+  <p style={{ height: "1000px" }}>
     {/* <HeaderContainer position="relative" /> */}
     {/* <main> */}
     {/* <Welcome />
