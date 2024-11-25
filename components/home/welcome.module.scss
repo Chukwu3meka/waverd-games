@@ -1,0 +1,99 @@
+@use "styles/index" as styles;
+
+.welcome {
+  @include styles.quickFlex($dir: row, $justify: center, $align: stretch);
+  min-height: calc(var(--visibleScreen) - var(--headerHeight));
+  overflow: hidden;
+
+  & > main {
+    @include styles.quickFlex($dir: row, $justify: flex-start, $align: stretch);
+    position: relative;
+    padding: 10px 5px;
+    max-width: 1200px;
+
+    & > aside {
+      z-index: 1;
+      @include styles.quickFlex($dir: column, $align: flex-start, $row: 20px);
+      padding: 10px 10px;
+      border-radius: 0 70px 0 70px;
+      border: 2px solid var(--secondary-color);
+
+      overflow: hidden !important;
+
+      span:nth-of-type(1) {
+        font-size: 1.4em;
+      }
+      span:nth-of-type(2) {
+        font-size: 2.7em;
+        padding-top: 20px;
+      }
+
+      span:nth-of-type(3) {
+        font-size: 1.1em;
+        padding-top: 10px;
+        margin-left: 10px;
+      }
+
+      span:nth-of-type(4) {
+        margin-top: -10px;
+        font-size: 1.1em;
+        margin-left: 10px;
+      }
+
+      & > nav {
+        margin-top: 20px;
+        @include styles.quickFlex($column: 20px, $row: 20px, $justify: flex-end, $width: 100%, $wrap: wrap);
+      }
+    }
+  }
+}
+
+@media (width >= 600px) {
+  .welcome > main > aside {
+    & > span:nth-child(1) {
+      font-size: 1.89em;
+    }
+    & > span:nth-child(2) {
+      font-size: 3.89em;
+    }
+    & > span:nth-child(3) {
+      font-size: 1.3em;
+    }
+    & > span:nth-child(4) {
+      font-size: 1.3em;
+    }
+  }
+}
+
+@media (width >= 900px) {
+  .welcome > main > aside {
+    & > span:nth-child(1) {
+      font-size: 2.7em;
+    }
+    & > span:nth-child(2) {
+      font-size: 4em;
+    }
+  }
+}
+
+@media (width >= 1200px) {
+  .welcome > main > aside {
+    & > span:nth-child(1) {
+      font-size: 3.3em;
+    }
+    & > span:nth-child(2) {
+      font-size: 5em;
+    }
+  }
+}
+
+@media (width >= 1536px) {
+  .welcome > main > aside {
+    & > span:nth-child(1) {
+      font-size: 4em;
+    }
+    & > span:nth-child(2) {
+      font-size: 6em;
+    }
+  }
+}
