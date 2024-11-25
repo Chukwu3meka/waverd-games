@@ -7,6 +7,7 @@ import { Button, Divider, Drawer, Flex, Steps, Typography } from "antd";
 // import { MenuProps } from "interfaces/components/others/layouts.interface";
 import { VscGame, VscHome, VscHubot, VscPersonAdd, VscSignIn, VscSignOut } from "react-icons/vsc";
 import SocialContainer from "components/shared/social/SocialContainer";
+import Image from "next/image";
 
 const navLinks = [
   { id: "home", title: "Home", Icon: VscHome, path: "/" },
@@ -63,7 +64,7 @@ const Menu = ({ toggleMenuOpen, menuOpen, profile, authenticated }: MenuProps) =
           <Divider />
 
           <div>
-            <img
+            <Image
               src="/images/layout/waverd.webp"
               alt="Wave Research"
               width={60}

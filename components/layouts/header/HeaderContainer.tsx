@@ -11,8 +11,8 @@ import { INIT_PROFILE } from "utils/constants";
 // import { Profile } from "interfaces/redux-store/account.interfaces";
 // import { HeaderContainerProps } from "interfaces/components/others/shared.interface";
 // import { ColorState, Theme, VisibleState } from "interfaces/components/others/layouts.interface";
-import { Header } from ".";
 import { setThemeAction } from "store/actions/account";
+import Header from "./Header";
 
 const HeaderContainer = (props: HeaderContainerProps) => {
   const //  accountsService = new AccountsService(),

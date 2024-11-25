@@ -3,10 +3,7 @@ import ManagerIntro from "./Manager";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 
-
-const ManagerContainer = (props: {
-  deviceWidth?: number;
-}) => {
+const ManagerContainer = (props: { deviceWidth?: number }) => {
   const [deviceWidth, setDeviceWidth] = useState(0),
     [slidesToShow, setSlidesToShow] = useState(0);
 

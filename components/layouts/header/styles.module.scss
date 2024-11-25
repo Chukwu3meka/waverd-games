@@ -8,8 +8,6 @@ header.relativeHeader {
   backdrop-filter: blur(2px); /* Apply a blur effect to the background */
   background: rgba(var(--primary-color), 0.7); /* Semi-transparent black background to create a blur effect */
 
-  border: 3px solid red;
-
   & > main {
     margin: auto;
     overflow: hidden;

@@ -1,6 +1,6 @@
+import Menu from "./Menu";
+
 import { useState } from "react";
-import { Menu } from ".";
-// import { MenuContainerProps } from "interfaces/components/others/layouts.interface";
 
 const MenuContainer = ({ profile, authenticated }: MenuContainerProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
