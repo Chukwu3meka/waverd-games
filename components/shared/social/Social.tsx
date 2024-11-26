@@ -1,9 +1,12 @@
-import { Button } from "antd";
-import { TbPhoneCall } from "react-icons/tb";
-import { VscGithubInverted } from "react-icons/vsc";
-import { MdFacebook, MdOutlineWhatsapp } from "react-icons/md";
-// import { Social } from "interfaces/components/others/shared.interface";
-import { TiSocialInstagram, TiSocialLinkedin, TiSocialTwitter } from "react-icons/ti";
+import dynamic from "next/dynamic";
+const Button = dynamic(() => import("antd").then((x) => x.Button));
+const MdFacebook = dynamic(() => import("react-icons/md").then((x) => x.MdFacebook));
+const TbPhoneCall = dynamic(() => import("react-icons/tb").then((x) => x.TbPhoneCall));
+const TiSocialTwitter = dynamic(() => import("react-icons/ti").then((x) => x.TiSocialTwitter));
+const TiSocialLinkedin = dynamic(() => import("react-icons/ti").then((x) => x.TiSocialLinkedin));
+const TiSocialInstagram = dynamic(() => import("react-icons/ti").then((x) => x.TiSocialInstagram));
+const MdOutlineWhatsapp = dynamic(() => import("react-icons/md").then((x) => x.MdOutlineWhatsapp));
+const VscGithubInverted = dynamic(() => import("react-icons/vsc").then((x) => x.VscGithubInverted));
 
 export const Social = ({ account, link, fontSize }: { link: string; account: string; fontSize: string }) => {
   let icon;

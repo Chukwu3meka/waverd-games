@@ -41,7 +41,7 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
       <div className={styles.managerIntro}>
         <div>
           <div>
-            <Image alt="Wave Research Clubs" src="/images/layout/intro-signup.webp" />
+            <Image alt="Wave Research Clubs" src="/images/layout/intro-signup.webp" width={200} height={200} />
           </div>
           <span>Step up to the challenge and beat the best managers. Take charge and steer your team to victory by joining now.</span>
 
@@ -54,16 +54,16 @@ export default function Manager({ slidesToShow, deviceWidth }: { slidesToShow: n
 
         <div>
           <div>
-            <Image alt="Wave Research Clubs" src="/images/layout/intro-clubs.webp" />
+            <Image width={200} height={200} alt="Wave Research Clubs" src="/images/layout/intro-clubs.webp" />
           </div>
           <div>
-            <Image alt="Wave Research Players" src="/images/layout/intro-players.png" />
+            <Image width={200} height={200} alt="Wave Research Players" src="/images/layout/intro-players.png" />
           </div>
         </div>
 
         <div>
           <div>
-            <Image alt="Wave Research Clubs" src="/images/layout/intro-signin.webp" />
+            <Image width={200} height={200} alt="Wave Research Clubs" src="/images/layout/intro-signin.webp" />
           </div>
           <span>Assemble your team and manage club finances, your players are eager for your leadership.</span>
           <Link href="/accounts/signin">

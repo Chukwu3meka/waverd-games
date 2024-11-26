@@ -15,7 +15,7 @@ const ApiHub = () => (
     </div>
 
     <Flex vertical gap={40} justify="space-evenly">
-      <Image src="/images/layout/intro-apihub.png" alt="Wave Research API HUB welcome image" />
+      <Image width={200} height={200} src="/images/layout/intro-apihub.png" alt="Wave Research API HUB welcome image" />
 
       <main>
         <Typography.Text style={{ fontWeight: 600 }} type="secondary">
@@ -43,7 +43,7 @@ const ApiHub = () => (
               <Col span={21}>
                 <Flex vertical>
                   <Typography.Text style={{ fontWeight: 800 }}>{title}</Typography.Text>
-                  <Typography.Text>{description}</Typography.Text>
+                  <Typography.Text style={{ textAlign: "justify" }}>{description}</Typography.Text>
                 </Flex>
               </Col>
             </Row>

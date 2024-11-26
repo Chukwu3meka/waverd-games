@@ -1,6 +1,8 @@
 import { Social } from "./Social";
-import { Flex } from "antd";
 import { SOCIAL_ACCOUNTS } from "utils/constants";
+
+import dynamic from "next/dynamic";
+const Flex = dynamic(() => import("antd").then((x) => x.Flex));
 
 const SocialContainer = ({ filterParams, fontSize = "18px" }: { fontSize?: string; filterParams: string[] }) => (
   <Flex>

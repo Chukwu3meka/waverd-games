@@ -1,6 +1,7 @@
 "use client";
 // import AccountsService from "services/accounts.service";
 
+import Header from "./Header";
 import { connect } from "react-redux";
 // import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
@@ -12,7 +13,6 @@ import { INIT_PROFILE } from "utils/constants";
 // import { HeaderContainerProps } from "interfaces/components/others/shared.interface";
 // import { ColorState, Theme, VisibleState } from "interfaces/components/others/layouts.interface";
 import { setThemeAction } from "store/actions/account";
-import Header from "./Header";
 
 const HeaderContainer = (props: HeaderContainerProps) => {
   const //  accountsService = new AccountsService(),

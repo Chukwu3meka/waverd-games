@@ -1,6 +1,6 @@
 export const setCssThemeVar = (theme: Theme) => {
   if (document) {
-    import("./constants").then((module) => {
+    import("utils/constants").then((module) => {
       const colors = module.COLORS;
 
       if (theme === "dark") {

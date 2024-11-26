@@ -1,14 +1,19 @@
-// "use client";
+"use client";
 
 import Link from "next/link";
-import styles from "./styles.module.scss";
-import MenuContainer from "./MenuContainer";
-import SocialContainer from "../../shared/social/SocialContainer";
-
+import dynamic from "next/dynamic";
 import { COLORS } from "utils/constants";
-import { Button, Flex, Typography } from "antd";
-import { BiLogIn, BiLogOut } from "react-icons/bi";
-import { MdDarkMode, MdLightMode } from "react-icons/md";
+import styles from "./styles.module.scss";
+
+const MenuContainer = dynamic(() => import("./MenuContainer")),
+  Flex = dynamic(() => import("antd").then((x) => x.Flex), { ssr: false }),
+  BiLogIn = dynamic(() => import("react-icons/bi").then((x) => x.BiLogIn)),
+  BiLogOut = dynamic(() => import("react-icons/bi").then((x) => x.BiLogOut)),
+  Button = dynamic(() => import("antd").then((x) => x.Button), { ssr: false }),
+  MdDarkMode = dynamic(() => import("react-icons/md").then((x) => x.MdDarkMode)),
+  MdLightMode = dynamic(() => import("react-icons/md").then((x) => x.MdLightMode)),
+  SocialContainer = dynamic(() => import("components/shared/social/SocialContainer")),
+  Typography = dynamic(() => import("antd").then((x) => x.Typography.Text), { ssr: false });
 
 const navLinks = [
   { title: "Home", path: "/" },
@@ -28,23 +33,23 @@ const Header = ({ className, authenticated, theme, themeHandler, visible, profil
 
       <Link href="/">
         <>
-          <Typography.Text ellipsis={true} style={{ fontWeight: 700, fontSize: "1.7em" }}>
+          <Typography ellipsis={true} style={{ fontWeight: 700, fontSize: "1.7em" }}>
             Wave
-          </Typography.Text>
-          <Typography.Text ellipsis={true} style={{ fontWeight: 700, fontSize: "1.7em", color: COLORS.primaryColor }}>
+          </Typography>
+          <Typography ellipsis={true} style={{ fontWeight: 700, fontSize: "1.7em", color: COLORS.primaryColor }}>
             Research
-          </Typography.Text>
+          </Typography>
         </>
       </Link>
 
       {visible.nav ? (
         <Flex align="flex-end">
           {navLinks.map(({ title, path }) => (
-            <Typography.Text key={title} style={{ fontWeight: 700 }}>
+            <Typography key={title} style={{ fontWeight: 700 }}>
               <Link href={path} key={title}>
                 {title}
               </Link>
-            </Typography.Text>
+            </Typography>
           ))}
         </Flex>
       ) : (
@@ -55,28 +60,20 @@ const Header = ({ className, authenticated, theme, themeHandler, visible, profil
         <MenuContainer profile={profile} authenticated={authenticated} />
       ) : (
         <Flex align="center">
-          {/* <SocialContainer fontSize="22px" filterParams={["twitter", "instagram", "whatsapp"]} /> */}
+          <SocialContainer fontSize="22px" filterParams={["twitter", "instagram", "whatsapp"]} />
 
           <div>
-            {/* {!authenticated && (
+            {!authenticated && (
               <Link href="/accounts/signin">
-                <Button
-                  // type="primary"
-                  // iconPosition="end"
-                  icon={<BiLogIn />}
-                  // size="large"
-                  //
-                  variant="outlined"
-                  //
-                >
+                <Button type="primary" iconPosition="end" icon={<BiLogIn />} size="large" variant="outlined">
                   Sign In
                 </Button>
               </Link>
-            )} */}
+            )}
 
             {authenticated && (
               <a href={`${process.env.BASE_URL}/accounts/signout`} rel="noopener noreferrer">
-                <Button variant="outlined" icon={<BiLogOut />}>
+                <Button type="primary" iconPosition="end" icon={<BiLogOut />} size="large" variant="outlined">
                   Sign out
                 </Button>
               </a>

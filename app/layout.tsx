@@ -3,10 +3,7 @@
 import "styles/globals.scss";
 import dynamic from "next/dynamic";
 import { store } from "store/store";
-import { Merienda, Roboto_Slab } from "next/font/google";
-
-const merienda = Merienda({ subsets: ["latin"], display: "swap" });
-const robotoSlab = Roboto_Slab({ subsets: ["latin"], display: "swap" });
+import { merienda, robotoSlab } from "utils/fonts";
 
 const RootProvider = dynamic(() => import("components/providers/RootProvider"));
 const ReduxProvider = dynamic(() => import("react-redux").then((module) => ({ default: module.Provider })));

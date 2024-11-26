@@ -1,13 +1,24 @@
-// import SocialContainer from "components/shared/social";
-
 import Link from "next/link";
-import { MdMenu } from "react-icons/md";
-import { AiOutlineClose } from "react-icons/ai";
-import { Button, Divider, Drawer, Flex, Steps, Typography } from "antd";
-// import { MenuProps } from "interfaces/components/others/layouts.interface";
-import { VscGame, VscHome, VscHubot, VscPersonAdd, VscSignIn, VscSignOut } from "react-icons/vsc";
-import SocialContainer from "components/shared/social/SocialContainer";
+
+const Flex = dynamic(() => import("antd").then((x) => x.Flex)),
+  Steps = dynamic(() => import("antd").then((x) => x.Steps)),
+  Drawer = dynamic(() => import("antd").then((x) => x.Drawer)),
+  Button = dynamic(() => import("antd").then((x) => x.Button)),
+  Divider = dynamic(() => import("antd").then((x) => x.Divider)),
+  MdMenu = dynamic(() => import("react-icons/md").then((x) => x.MdMenu)),
+  Typography = dynamic(() => import("antd").then((x) => x.Typography.Text)),
+  VscGame = dynamic(() => import("react-icons/vsc").then((x) => x.VscGame)),
+  VscHome = dynamic(() => import("react-icons/vsc").then((x) => x.VscHome)),
+  VscHubot = dynamic(() => import("react-icons/vsc").then((x) => x.VscHubot)),
+  VscSignIn = dynamic(() => import("react-icons/vsc").then((x) => x.VscSignIn)),
+  VscSignOut = dynamic(() => import("react-icons/vsc").then((x) => x.VscSignOut)),
+  VscPersonAdd = dynamic(() => import("react-icons/vsc").then((x) => x.VscPersonAdd)),
+  AiOutlineClose = dynamic(() => import("react-icons/ai").then((x) => x.AiOutlineClose));
+
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const SocialContainer = dynamic(() => import("components/shared/social/SocialContainer"));
 
 const navLinks = [
   { id: "home", title: "Home", Icon: VscHome, path: "/" },
@@ -30,12 +41,12 @@ const Menu = ({ toggleMenuOpen, menuOpen, profile, authenticated }: MenuProps) =
           <Flex align="center" gap={10}>
             <img src={profile.avatar} style={{ borderRadius: "50%" }} alt="Profile Image" width={40} height={40} />
             <Flex vertical>
-              <Typography.Text strong ellipsis={true}>
+              <Typography strong ellipsis={true}>
                 {profile.name}
-              </Typography.Text>
-              <Typography.Text type="secondary" ellipsis={true}>
+              </Typography>
+              <Typography type="secondary" ellipsis={true}>
                 {profile.handle}
-              </Typography.Text>
+              </Typography>
             </Flex>
           </Flex>
 
@@ -54,7 +65,7 @@ const Menu = ({ toggleMenuOpen, menuOpen, profile, authenticated }: MenuProps) =
               status: "finish",
               title: (
                 <Link href={path}>
-                  <Typography.Text strong>{title}</Typography.Text>
+                  <Typography strong>{title}</Typography>
                 </Link>
               ),
             }))}
@@ -80,13 +91,13 @@ const Menu = ({ toggleMenuOpen, menuOpen, profile, authenticated }: MenuProps) =
 
           <SocialContainer filterParams={["twitter", "instagram", "whatsapp", "linkedin", "facebook"]} fontSize="20px" />
 
-          <Typography.Text type="secondary" style={{ fontSize: ".8em", textAlign: "center" }}>
+          <Typography type="secondary" style={{ fontSize: ".8em", textAlign: "center" }}>
             ● All rights reserved. All trademarks are the property of their respective owners ●
-          </Typography.Text>
+          </Typography>
 
-          <Typography.Text strong ellipsis>
+          <Typography strong ellipsis>
             <span>©Wave Research 2018 ~ {new Date().getFullYear()}</span>
-          </Typography.Text>
+          </Typography>
         </Flex>
       </Flex>
     </Drawer>
