@@ -1,3 +1,5 @@
+"use client";
+
 import { COLORS } from "utils/constants";
 import { theme as antdTheme } from "antd";
 
