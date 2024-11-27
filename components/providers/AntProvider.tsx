@@ -6,7 +6,8 @@ import { theme as antdTheme } from "antd";
 import dynamic from "next/dynamic";
 // const ConfigProvider = dynamic(() => import("antd").then((module) => module.ConfigProvider));
 // const AntdRegistry = dynamic(() => import("@ant-design/nextjs-registry").then((module) => module.AntdRegistry));
-const ConfigProvider = dynamic(() => import("antd/es/config-provider"));
+// const ConfigProvider = dynamic(() => import("antd/config-provider"));
+const ConfigProvider = dynamic(() => import("antd").then((module) => module.ConfigProvider));
 const AntdRegistry = dynamic(() => import("@ant-design/nextjs-registry/es/AntdRegistry"));
 
 const AntProvider = ({ children, theme }: { theme: Theme; children: React.ReactNode }) => (

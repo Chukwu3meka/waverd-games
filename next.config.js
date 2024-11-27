@@ -5,9 +5,9 @@
 const nextConfig = {
   reactStrictMode: false,
 
-  // modularizeImports: {
-  //   antd: { transform: "antd/{{ member }}" },
-  // },
+  modularizeImports: {
+    antd: { transform: "antd/{{ member }}" },
+  },
 
   sassOptions: {
     silenceDeprecations: ["legacy-js-api"],
