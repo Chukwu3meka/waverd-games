@@ -101,11 +101,11 @@ const RootProvider = (props: any) => {
   };
 
   return initialized ? (
-    // <AntProvider theme={theme}>
-    //   <HeaderContainer position="sticky" />
-    //   {props.children}
-    // </AntProvider>
-    <p>app</p>
+    <AntProvider theme={theme}>
+      {/* <HeaderContainer position="sticky" /> */}
+      {/* {props.children} */}
+      <p>app</p>
+    </AntProvider>
   ) : (
     <Spin fullscreen spinning={true} />
   );
