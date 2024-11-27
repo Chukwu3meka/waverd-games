@@ -5,13 +5,17 @@
 const nextConfig = {
   reactStrictMode: false,
 
+  // modularizeImports: {
+  //   antd: { transform: "antd/{{ member }}" },
+  // },
+
   sassOptions: {
     silenceDeprecations: ["legacy-js-api"],
   },
 
-  compiler: {
-    removeConsole: true,
-  },
+  // compiler: {
+  //   removeConsole: true,
+  // },
 };
 
 // export default nextConfig;
