@@ -6,14 +6,14 @@ import { COLORS } from "utils/constants";
 import styles from "./styles.module.scss";
 
 const MenuContainer = dynamic(() => import("./MenuContainer")),
-  Flex = dynamic(() => import("antd").then((x) => x.Flex), { ssr: false }),
+  Flex = dynamic(() => import("antd").then((x) => x.Flex)),
   BiLogIn = dynamic(() => import("react-icons/bi").then((x) => x.BiLogIn)),
   BiLogOut = dynamic(() => import("react-icons/bi").then((x) => x.BiLogOut)),
-  Button = dynamic(() => import("antd").then((x) => x.Button), { ssr: false }),
+  Button = dynamic(() => import("antd").then((x) => x.Button)),
   MdDarkMode = dynamic(() => import("react-icons/md").then((x) => x.MdDarkMode)),
   MdLightMode = dynamic(() => import("react-icons/md").then((x) => x.MdLightMode)),
   SocialContainer = dynamic(() => import("components/shared/social/SocialContainer")),
-  Typography = dynamic(() => import("antd").then((x) => x.Typography.Text), { ssr: false });
+  Typography = dynamic(() => import("antd").then((x) => x.Typography.Text));
 
 const navLinks = [
   { title: "Home", path: "/" },

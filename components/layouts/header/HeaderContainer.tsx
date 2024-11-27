@@ -61,7 +61,8 @@ const HeaderContainer = (props: HeaderContainerProps) => {
     });
   };
 
-  return <Header {...{ className, authenticated, theme, profile, themeHandler, visible }} />;
+  return <p>ss</p>;
+  // return <Header {...{ className, authenticated, theme, profile, themeHandler, visible }} />;
 };
 
 const mapStateToProps = (state: RootState) => ({

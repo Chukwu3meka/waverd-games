@@ -1,3 +1,5 @@
+"use client";
+
 import ManagerIntro from "./Manager";
 
 import { connect } from "react-redux";

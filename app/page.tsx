@@ -1,22 +1,22 @@
-"use client";
+// import dynamic from "next/dynamic";
 
-import dynamic from "next/dynamic";
-
-const ApiHub = dynamic(() => import("components/home/ApiHub"), { ssr: false }),
-  Welcome = dynamic(() => import("components/home/Welcome"), { ssr: false }),
-  FooterContainer = dynamic(() => import("components/layouts/footer"), { ssr: false }),
-  ManagerContainer = dynamic(() => import("components/home/ManagerContainer"), { ssr: false }),
-  HeaderContainer = dynamic(() => import("components/layouts/header/HeaderContainer"), { ssr: false });
+// const ApiHub = dynamic(() => import("components/home/ApiHub")),
+//   Welcome = dynamic(() => import("components/home/Welcome"), { loading: () => <>'loadign'</> }),
+//   FooterContainer = dynamic(() => import("components/layouts/footer")),
+//   ManagerContainer = dynamic(() => import("components/home/ManagerContainer")),
+//   HeaderContainer = dynamic(() => import("components/layouts/header/HeaderContainer"));
 
 const Page = () => (
   <>
-    <HeaderContainer position="relative" />
-    <Welcome />
-    <ManagerContainer />
-    <ApiHub />
+    <p>sss</p>
+    {/* <HeaderContainer position="relative" /> */}
+    {/* <Welcome /> */}
+    {/* <ManagerContainer /> */}
+    {/* <ApiHub /> */}
     {/* <RefreshHome /> */}
-    <FooterContainer />
+    {/* <FooterContainer /> */}
   </>
 );
 
-export { Page as default };
+// export { Page as default };
+export default Page;
