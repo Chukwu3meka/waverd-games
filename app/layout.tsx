@@ -1,21 +1,17 @@
-// "use client";
-
-// import "styles/globals.scss";
-// import dynamic from "next/dynamic";
-// import { store } from "store/store";
-// import { merienda, robotoSlab } from "utils/fonts";
+import "styles/globals.scss";
+import dynamic from "next/dynamic";
+import { merienda, robotoSlab } from "utils/fonts";
 
 // const RootProvider = dynamic(() => import("components/providers/RootProvider"));
-// const ReduxProvider = dynamic(() => import("react-redux").then((module) => ({ default: module.Provider })));
+const ReduxProvider = dynamic(() => import("components/providers/ReduxProvider"));
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
-  // <html lang="en" className={`${merienda.className}  ${robotoSlab.className}`}>
-  <html lang="en">
+  <html lang="en" className={`${merienda.className}  ${robotoSlab.className}`}>
     <body>
-      <p>sss</p>
-      {/* <ReduxProvider store={store}>
-        <RootProvider>{children}</RootProvider>
-      </ReduxProvider> */}
+      <ReduxProvider>
+        <p>sss</p>
+        {/* <RootProvider>{children}</RootProvider> */}
+      </ReduxProvider>
     </body>
   </html>
 );
