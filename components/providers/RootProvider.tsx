@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import WebVitals from "components/shared/web-vitals/WebVitals";
 
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
@@ -12,7 +11,7 @@ import { HEADER_HEIGHT, INIT_PROFILE } from "utils/constants";
 import { setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction, setActiveRouteAction } from "store/actions/layout";
 
 const Spin = dynamic(() => import("antd").then((x) => x.Spin));
-const AntProvider = dynamic(() => import("components/providers/AntProvider"), { ssr: false });
+const AntProvider = dynamic(() => import("components/providers/AntProvider"));
 const HeaderContainer = dynamic(() => import("components/layouts/header/HeaderContainer"));
 
 const RootProvider = (props: any) => {
@@ -104,7 +103,6 @@ const RootProvider = (props: any) => {
   return initialized ? (
     <AntProvider theme={theme}>
       <HeaderContainer position="sticky" />
-      <WebVitals />
       {props.children}
     </AntProvider>
   ) : (
