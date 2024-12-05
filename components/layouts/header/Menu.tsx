@@ -1,12 +1,6 @@
 import Link from "next/link";
 
-const Flex = dynamic(() => import("antd").then((x) => x.Flex)),
-  Steps = dynamic(() => import("antd").then((x) => x.Steps)),
-  Drawer = dynamic(() => import("antd").then((x) => x.Drawer)),
-  Button = dynamic(() => import("antd").then((x) => x.Button)),
-  Divider = dynamic(() => import("antd").then((x) => x.Divider)),
-  MdMenu = dynamic(() => import("react-icons/md").then((x) => x.MdMenu)),
-  Typography = dynamic(() => import("antd").then((x) => x.Typography.Text)),
+const MdMenu = dynamic(() => import("react-icons/md").then((x) => x.MdMenu)),
   VscGame = dynamic(() => import("react-icons/vsc").then((x) => x.VscGame)),
   VscHome = dynamic(() => import("react-icons/vsc").then((x) => x.VscHome)),
   VscHubot = dynamic(() => import("react-icons/vsc").then((x) => x.VscHubot)),
@@ -29,9 +23,23 @@ const navLinks = [
   { id: "signout", title: "Sign Out from Wave Research", Icon: VscSignOut, path: `${process.env.BASE_URL}/accounts/signout` },
 ];
 
+import { Button } from "@/components/ui/button";
+// import { Input } from "@/components/ui/input"
+// import { Label } from "@/components/ui/label"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+
 const Menu = ({ toggleMenuOpen, menuOpen, profile, authenticated }: MenuProps) => (
   <>
-    <Button type="primary" icon={<MdMenu />} aria-label="mobile-menu" onClick={(e) => toggleMenuOpen(e)} />
+    {/* <Button type="primary" icon={<MdMenu />} aria-label="mobile-menu" onClick={(e) => toggleMenuOpen(e)} />
 
     <Drawer
       width={350}
@@ -100,7 +108,7 @@ const Menu = ({ toggleMenuOpen, menuOpen, profile, authenticated }: MenuProps) =
           </Typography>
         </Flex>
       </Flex>
-    </Drawer>
+    </Drawer> */}
   </>
 );
 

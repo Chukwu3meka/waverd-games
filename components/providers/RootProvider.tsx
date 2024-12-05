@@ -3,6 +3,9 @@
 import dynamic from "next/dynamic";
 
 import { connect } from "react-redux";
+import { Loader2 } from "lucide-react";
+import { useTheme } from "next-themes";
+import ThemeProvider from "./ThemeProvider";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { setCssThemeVar } from "utils/helpers";
@@ -10,18 +13,16 @@ import { setProfileAction } from "store/actions/account";
 import { HEADER_HEIGHT, INIT_PROFILE } from "utils/constants";
 import { setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction, setActiveRouteAction } from "store/actions/layout";
 
-const Spin = dynamic(() => import("antd").then((x) => x.Spin));
-const AntProvider = dynamic(() => import("components/providers/AntProvider"));
 const HeaderContainer = dynamic(() => import("components/layouts/header/HeaderContainer"));
 
-const RootProvider = (props: any) => {
+const RootProvider = ({ children, ...props }: any) => {
   const { user, setProfileAction, setDeviceSizeAction, setDisplayHeaderAction, setBreakpointAction, setActiveRouteAction } = props;
 
   const pathname = usePathname(),
+    { setTheme } = useTheme(),
     [initialized, setInitialized] = useState(false),
     [prevScrollPos, setPrevScrollPos] = useState(0),
-    [displayHeader, setDisplayHeader] = useState(false),
-    [theme, setTheme] = useState<Theme>(INIT_PROFILE.theme);
+    [displayHeader, setDisplayHeader] = useState(false);
 
   useEffect(() => {
     const profile = user || INIT_PROFILE;
@@ -65,16 +66,11 @@ const RootProvider = (props: any) => {
     }
   }, [props.displayHeader]);
 
-  useEffect(() => {
-    setTheme(props.theme!);
-  }, [props.theme]);
-
   const handleResize = () => {
     if (setDeviceSizeAction && setBreakpointAction) {
       import("utils/constants").then((module) => {
-        const { xl, lg, md, sm } = module.BREAKPOINTS;
-
-        const { innerWidth: width, innerHeight: height } = window;
+        const { xl, lg, md, sm } = module.BREAKPOINTS,
+          { innerWidth: width, innerHeight: height } = window;
 
         setDeviceSizeAction({ width, height });
         setBreakpointAction(width > xl ? "xl" : width > lg ? "lg" : width > md ? "md" : width > sm ? "sm" : "xs");
@@ -101,13 +97,14 @@ const RootProvider = (props: any) => {
   };
 
   return initialized ? (
-    <AntProvider theme={theme}>
-      {/* <HeaderContainer position="sticky" /> */}
-      {/* {props.children} */}
-      <p>app</p>
-    </AntProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <HeaderContainer position="sticky" />
+      {children}
+    </ThemeProvider>
   ) : (
-    <Spin fullscreen spinning={true} />
+    <div className="h-screen	w-screen grid place-items-center">
+      <Loader2 className="animate-spin" />
+    </div>
   );
 };
 

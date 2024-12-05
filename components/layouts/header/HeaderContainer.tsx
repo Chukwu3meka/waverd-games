@@ -13,9 +13,11 @@ import { INIT_PROFILE } from "utils/constants";
 // import { HeaderContainerProps } from "interfaces/components/others/shared.interface";
 // import { ColorState, Theme, VisibleState } from "interfaces/components/others/layouts.interface";
 import { setThemeAction } from "store/actions/account";
+import { useTheme } from "next-themes";
 
 const HeaderContainer = (props: HeaderContainerProps) => {
-  const //  accountsService = new AccountsService(),
+  const { setTheme: setShadTheme } = useTheme(),
+    //  accountsService = new AccountsService(),
     //   { enqueueSnackbar } = useSnackbar(),
     { position, setThemeAction } = props,
     [profile, setProfile] = useState<Profile>(INIT_PROFILE),
@@ -49,6 +51,7 @@ const HeaderContainer = (props: HeaderContainerProps) => {
   const themeHandler = async () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
+    setShadTheme(newTheme);
 
     import("utils/helpers").then((module) => {
       module.setCssThemeVar(newTheme);
@@ -61,8 +64,8 @@ const HeaderContainer = (props: HeaderContainerProps) => {
     });
   };
 
-  return <p>ss</p>;
-  // return <Header {...{ className, authenticated, theme, profile, themeHandler, visible }} />;
+  // return <p>ss</p>;
+  return <Header {...{ className, authenticated, theme, profile, themeHandler, visible }} />;
 };
 
 const mapStateToProps = (state: RootState) => ({

@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-const Button = dynamic(() => import("antd").then((x) => x.Button));
 const MdFacebook = dynamic(() => import("react-icons/md").then((x) => x.MdFacebook));
 const TbPhoneCall = dynamic(() => import("react-icons/tb").then((x) => x.TbPhoneCall));
 const TiSocialTwitter = dynamic(() => import("react-icons/ti").then((x) => x.TiSocialTwitter));
@@ -39,8 +38,8 @@ export const Social = ({ account, link, fontSize }: { link: string; account: str
   }
 
   return icon ? (
-    <a href={link} target="_blank" rel="noopener noreferrer" aria-label={account.toLowerCase()}>
-      <Button type="text" aria-label="change-theme" icon={icon} />
+    <a href={link} target="_blank" rel="noopener noreferrer" aria-label={account.toLowerCase()} style={{ color: "var(--contrast-color)" }}>
+      {icon}
     </a>
   ) : null;
 };

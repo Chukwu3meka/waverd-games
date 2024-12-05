@@ -6,7 +6,7 @@ const RootProvider = dynamic(() => import("components/providers/RootProvider"));
 const ReduxProvider = dynamic(() => import("components/providers/ReduxProvider"));
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
-  <html lang="en" className={`${merienda.className}  ${robotoSlab.className}`}>
+  <html lang="en" suppressHydrationWarning className={`${merienda.className}  ${robotoSlab.className}`}>
     <body>
       <ReduxProvider>
         <RootProvider>{children}</RootProvider>

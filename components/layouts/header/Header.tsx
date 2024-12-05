@@ -5,15 +5,28 @@ import dynamic from "next/dynamic";
 import { COLORS } from "utils/constants";
 import styles from "./styles.module.scss";
 
+import { BiMoon, BiSun } from "react-icons/bi";
+// import { Button } from "@/components/ui/button";
+// import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
+// "use client"
+
+// import * as React from "react"
+import { Moon, MoonIcon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+
+import { Button } from "@/components/ui/button";
+// import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import Typography from "@/components/ui/typography";
+import { Fragment } from "react";
+// import Typography from "@/components/ui/typography";
+
 const MenuContainer = dynamic(() => import("./MenuContainer")),
-  Flex = dynamic(() => import("antd").then((x) => x.Flex)),
   BiLogIn = dynamic(() => import("react-icons/bi").then((x) => x.BiLogIn)),
   BiLogOut = dynamic(() => import("react-icons/bi").then((x) => x.BiLogOut)),
-  Button = dynamic(() => import("antd").then((x) => x.Button)),
   MdDarkMode = dynamic(() => import("react-icons/md").then((x) => x.MdDarkMode)),
-  MdLightMode = dynamic(() => import("react-icons/md").then((x) => x.MdLightMode)),
   SocialContainer = dynamic(() => import("components/shared/social/SocialContainer")),
-  Typography = dynamic(() => import("antd").then((x) => x.Typography.Text));
+  MdLightMode = dynamic(() => import("react-icons/md").then((x) => x.MdLightMode));
 
 const navLinks = [
   { title: "Home", path: "/" },
@@ -24,62 +37,51 @@ const navLinks = [
 const Header = ({ className, authenticated, theme, themeHandler, visible, profile }: HeaderProps) => (
   <header id="header" data-test-id={className} className={styles[className]}>
     <main>
-      <Button
-        type="text"
-        onClick={themeHandler}
-        aria-label="change-theme"
-        icon={theme === "light" ? <MdDarkMode size={25} /> : <MdLightMode size={25} />}
-      />
+      <button onClick={themeHandler}>{theme === "light" ? <MdDarkMode fontSize={20} /> : <MdLightMode fontSize={20} />}</button>
 
       <Link href="/">
-        <>
-          <Typography ellipsis={true} style={{ fontWeight: 700, fontSize: "1.7em" }}>
-            Wave
-          </Typography>
-          <Typography ellipsis={true} style={{ fontWeight: 700, fontSize: "1.7em", color: COLORS.primaryColor }}>
-            Research
-          </Typography>
-        </>
+        <h1 className="text-3xl font-extrabold">
+          <span>Wave</span>
+          <span style={{ color: "var(--contrast-color)" }}>Research</span>
+        </h1>
       </Link>
 
       {visible.nav ? (
-        <Flex align="flex-end">
+        <div className="flex items-center">
           {navLinks.map(({ title, path }) => (
-            <Typography key={title} style={{ fontWeight: 700 }}>
-              <Link href={path} key={title}>
-                {title}
-              </Link>
-            </Typography>
+            <Link href={path} key={title}>
+              {title}
+            </Link>
           ))}
-        </Flex>
+        </div>
       ) : (
         <></>
       )}
-
       {visible.mobile ? (
-        <MenuContainer profile={profile} authenticated={authenticated} />
+        // <MenuContainer profile={profile} authenticated={authenticated} />
+        <p>sss22</p>
       ) : (
-        <Flex align="center">
-          <SocialContainer fontSize="22px" filterParams={["twitter", "instagram", "whatsapp"]} />
+        <div className="flex items-center">
+          <SocialContainer fontSize="17px" filterParams={["twitter", "instagram", "whatsapp"]} />
 
           <div>
             {!authenticated && (
               <Link href="/accounts/signin">
-                <Button type="primary" iconPosition="end" icon={<BiLogIn />} size="large" variant="outlined">
-                  Sign In
+                <Button>
+                  <BiLogIn /> Sign In
                 </Button>
               </Link>
             )}
 
             {authenticated && (
               <a href={`${process.env.BASE_URL}/accounts/signout`} rel="noopener noreferrer">
-                <Button type="primary" iconPosition="end" icon={<BiLogOut />} size="large" variant="outlined">
-                  Sign out
+                <Button>
+                  <BiLogOut /> Sign out
                 </Button>
               </a>
             )}
           </div>
-        </Flex>
+        </div>
       )}
     </main>
   </header>
